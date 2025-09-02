@@ -2,13 +2,18 @@ import React from 'react'
 
 const types = {
     email: {
-        regex: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        regex: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         ,
         message: "Preencha um email Válido"
+    },
+    fone: {
+        regex: /^\(?([1-9]{2})\)?\s?(9{1})?([0-9]{4})-?([0-9]{4})$/
+        ,
+        message: "Infome um número válido"
     }
 }
 
-const useCalc = (type) => {
+const useForm= (type) => {
 
     const [value, setValue] = React.useState('')
     const [error, setError] = React.useState(null)
@@ -42,4 +47,4 @@ const useCalc = (type) => {
   }
 }
 
-export default useCalc
+export default useForm
