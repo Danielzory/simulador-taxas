@@ -65,7 +65,7 @@ const Simular = () => {
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, 'Simulações');
 
-    XLSX.writeFile(workbook, `simulação-${name}.xlsx`);
+    XLSX.writeFile(workbook, `simulação-${name.value}.xlsx`);
     setShowExportButton(false)
   }
 
