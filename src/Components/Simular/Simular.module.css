@@ -1,0 +1,30 @@
+.form {
+    margin-bottom: 1.8rem;    
+}
+
+.simular {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    gap: 2rem;
+}
+
+.simular::before{
+    display: block;
+    content: '';
+    background: url('../../Assets/simular.jpg') no-repeat center center;
+    background-size: cover;    
+}
+
+
+@media (max-width: 40rem) {
+    .simular{
+        grid-template-columns: 1fr;
+    }
+    .simular::before {
+        display: none;
+    }
+    .control {
+        max-width: 100%;
+    }
+}
