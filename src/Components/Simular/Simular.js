@@ -3,7 +3,6 @@ import styles from './Simular.module.css'
 import Button from '../Forms/Button'
 import Input from '../Forms/Input'
 import useForm from '../../Hooks/useForm'
-import * as XLSX from 'xlsx'
 
 const Simular = () => {
 
@@ -32,6 +31,10 @@ const Simular = () => {
       email
     }
     setUserData(prev => [...prev, user])
+    const storedUsers = JSON.parse(localStorage.getItem('simulatedUsers')) || []
+    const updatedList = [...storedUsers, user]
+    localStorage.setItem('simulatedUsers', JSON.stringify(updatedList))
+    setUserData(updatedList)
   }
 
   function handleSubmit (event) {
@@ -49,26 +52,6 @@ const Simular = () => {
     }
 }
 
-  function exportXlsxVertical() {
-    const worksheetData = [];
-
-    userData.forEach((user, index) => {
-      const baseRow = index * 4; // espaço entre blocos
-
-      worksheetData[baseRow] = ['Nome', user.name];
-      worksheetData[baseRow + 1] = ['Telefone', user.fone];
-      worksheetData[baseRow + 2] = ['Email', user.email];
-      worksheetData[baseRow + 3] = []; // linha em branco opcional
-    });
-
-    const worksheet = XLSX.utils.aoa_to_sheet(worksheetData);
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, 'Simulações');
-
-    XLSX.writeFile(workbook, `simulação-${name.value}.xlsx`);
-    setShowExportButton(false)
-  }
-
   return (
     <section className={`${styles.simular} animeLeft`}>
  
@@ -83,9 +66,6 @@ const Simular = () => {
         
         {loading && <p className='loading'>Carregando resultado...</p>}
         {result && <h3 className={styles.result}>Olá {name.value}, após o Desenrola EVR seu Score será de aproximadamente: {result}</h3>}
-        {showExportButton && userData.length > 0 && (
-        <Button onClick={exportXlsxVertical}>Exportar para Excel</Button>
-        )}
 
       </form>
 
