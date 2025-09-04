@@ -28,6 +28,9 @@
 @media (max-width: 40rem) {
     .simular{
         grid-template-columns: 1fr;
+        background: url('../../Assets/simular.jpg') no-repeat center center;
+        background-size: cover;
+        color: #f0f0f0;
     }
     .simular::before {
         display: none;

@@ -12,7 +12,6 @@ const Simular = () => {
   const email = useForm('email');  
   const [loading, setLoading] = React.useState(false)
   const [result, setResult] = React.useState(null)
-  const [showExportButton, setShowExportButton] = React.useState(false)
 
   const [userData, setUserData] = React.useState([])
 
@@ -22,6 +21,12 @@ const Simular = () => {
       setResult(calc.toFixed(0));
       setLoading(false)
     }, 3000);
+  }
+
+  function reloadPage () {
+    setTimeout(()=>{
+      window.location.reload()
+    }, 5000)
   }
 
   function addUserData (name, fone, email) {
@@ -38,15 +43,12 @@ const Simular = () => {
   }
 
   function handleSubmit (event) {
-    if(score.validate() && fone.validate() && name.validate()){
+    if(score.validate() && fone.validate() && name.validate() && email.validate()){
       event.preventDefault()
       setLoading(true)
       scoreCalc (score.value) 
       addUserData(name.value, fone.value, email.value)
-      setTimeout(() => {
-        setShowExportButton(true);
-      }, 3200);
-
+      reloadPage()
     } else {
       window.alert("Por favor, preencha todos os dados")
     }

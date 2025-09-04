@@ -1,0 +1,31 @@
+.procuracao {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 50vh;
+    gap: 2rem;
+}
+
+
+.procuracao::before{
+    display: block;
+    content: '';
+    background: url('../../Assets/procuracao.jpg') no-repeat center center;
+    background-size: cover;   
+    z-index: -1; 
+}
+
+
+@media (max-width: 40rem) {
+    .procuracao{
+        grid-template-columns: 1fr;
+        background: url('../../Assets/procuracao.jpg') no-repeat center center;
+        background-size: cover;
+        color: #f0f0f0;
+    }
+    .procuracao::before {
+        display: none;
+    }
+    .control {
+        max-width: 100%;
+    }
+}
