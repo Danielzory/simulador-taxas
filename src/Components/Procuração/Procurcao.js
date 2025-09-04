@@ -30,17 +30,17 @@ const Procurcao = () => {
     event.preventDefault()
     if(name.validate() && cpf.validate() && rg.validate() && mStatus.validate() && adress.validate() && fone.validate() && email.validate() && occupation.validate()) {
       const data = [
-        ['Nome Completo', name.value],
-        ['CPF', cpf.value],
-        ['RG', rg.value],
-        ['Data de Nascimento', born.value],
-        ['Estado Civil', mStatus.value],
-        ['Endereço', adress.value],
-        ['Telefone', fone.value],
-        ['E-mail', email.value],
-        ['Nome da Empresa', company.value],
-        ['Tempo na Empresa', companyTime.value],
-        ['Profissão', occupation.value],
+        ['Nome:', name.value],
+        ['CPF:', cpf.value],
+        ['RG:', rg.value],
+        ['Data de Nascimento:', born.value],
+        ['Estado Civil:', mStatus.value],
+        ['Endereço:', adress.value],
+        ['Telefone:', fone.value],
+        ['E-mail:', email.value],
+        ['Nome da Empresa::', company.value],
+        ['Tempo na Empresa:', companyTime.value],
+        ['Função:', occupation.value],
       ]
 
       const worksheet = XLSX.utils.aoa_to_sheet(data)
