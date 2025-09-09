@@ -1,0 +1,20 @@
+.digitalSpeedometer {
+  background-color: #2e2e2e;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 200px;
+  margin: 10px auto;
+  border: 2px solid #04e3fb;
+}
+
+.speedValue {
+  font-family: 'Courier New', monospace;
+  font-size: 40px;
+  color: #04e3fb;
+  text-shadow: 0 0 10px #14e3fb;
+  letter-spacing: 2px;
+}

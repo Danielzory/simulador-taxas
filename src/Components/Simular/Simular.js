@@ -3,6 +3,9 @@ import styles from './Simular.module.css'
 import Button from '../Forms/Button'
 import Input from '../Forms/Input'
 import useForm from '../../Hooks/useForm'
+import Confetti from 'react-confetti'
+import { useWindowSize } from 'react-use'
+import DigitalSpeedometer from '../Speedometer/DigitalSpeedometer'
 
 const Simular = () => {
 
@@ -14,6 +17,7 @@ const Simular = () => {
   const [result, setResult] = React.useState(null)
 
   const [userData, setUserData] = React.useState([])
+  const { width, height } = useWindowSize()
 
   function scoreCalc (score) {
       setTimeout(()=>{
@@ -26,7 +30,7 @@ const Simular = () => {
   function reloadPage () {
     setTimeout(()=>{
       window.location.reload()
-    }, 5000)
+    }, 30000)
   }
 
   function addUserData (name, fone, email) {
@@ -64,10 +68,19 @@ const Simular = () => {
         <Input label={"Score Atual"} type={"Text"} name={"score"} {...score}  />
         <Input label={"E-mail"} type={"email"} name={"email"} {...email}  />
         
-        <Button>Simular</Button>
+        {!result && (
+          <Button>Simular</Button>
+        )}
         
         {loading && <p className='loading'>Carregando resultado...</p>}
-        {result && <h3 className={styles.result}>Olá {name.value}, após o Desenrola EVR seu Score será de aproximadamente: {result}</h3>}
+
+        {result && (
+          <div className={styles.result}>
+            <Confetti width={width} height={height} numberOfPieces={200} />
+            <h3 className={styles.title}>Olá {name.value.split(' ')[0]}, seu score estimado após o Desenrola EVR é:</h3>
+            <DigitalSpeedometer value={result} />
+          </div>
+        )}
 
       </form>
 
